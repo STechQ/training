@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO('../runs/content/runs/detect/train/weights/best.pt')
+model = YOLO('../runs/train/weights/best.pt')
 model.predict("imagelanding.png", save=True, conf=0.5, iou=0)
 
 
