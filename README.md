@@ -170,3 +170,7 @@ On your coworker’s machine:
 
 **conda env export --no-builds > environment.yaml**
 **conda init bash**
+
+
+source ~/.bash_profile
+

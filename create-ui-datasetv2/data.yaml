@@ -1,0 +1,13 @@
+train: ./train/images
+val: ./valid/images
+test: ./test/images
+
+nc: 34
+names: ['Doughnut', 'Line', 'QLabel', 'QMenu', 'VAlert', 'VAppBar', 'VAvatar', 'VBadge', 'VBottomNavigation', 'VBreadcrumbs', 'VBtn', 'VCard', 'VCarousel', 'VCheckbox', 'VChip', 'VCombobox', 'VContainer', 'VDataTable', 'VDialog', 'VDivider', 'VExpansionPanels', 'VFileInput', 'VFooter', 'VIcon', 'VImg', 'VInlineDatepicker', 'VPagination', 'VRadio', 'VStepper', 'VSwitch', 'VTab', 'VTabs', 'VTextField', 'VTextarea']
+
+# roboflow:
+#   workspace: plateaustudio
+#   project: uicomponents-i1r59
+#   version: 2
+#   license: CC BY 4.0
+#   url: https://universe.roboflow.com/plateaustudio/uicomponents-i1r59/dataset/2
