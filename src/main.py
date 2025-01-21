@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 
-model = YOLO('../runs/train/weights/best.pt')
-model.predict("imagelanding.png", save=True, conf=0.5, iou=0)
+model = YOLO('./runs/train/weights/best.pt')
+model.predict("images/dashboardunseen.png", save=True, conf=0.4, iou=0.5)
 
 
 # results = model('Frame 17959.png')  
