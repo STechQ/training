@@ -57,7 +57,7 @@ def encode_image_to_base64(image):
     return encoded_image
 
 def detect_objects(image, model):
-    results = model(image, save=True, conf=0.4, iou=0.5)
+    results = model(image, conf=0.4, iou=0.5)
     detections = []
 
     # results[0].save_crop(CROPPED_IMAGES_DIR)
