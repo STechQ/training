@@ -12,10 +12,10 @@ import base64
 MODEL_PATH = 'runs/train/weights/best.pt'
 model = YOLO(MODEL_PATH)
 
-app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
+app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
-# CROPPED_IMAGES_DIR = "cropped_images"
-# os.makedirs(CROPPED_IMAGES_DIR, exist_ok=True)
+CROPPED_IMAGES_DIR = "cropped_images"
+os.makedirs(CROPPED_IMAGES_DIR, exist_ok=True)
 
 def resize_with_padding(image, target_size=(640, 640), fill_color=(114, 114, 114)):
     original_width, original_height = image.size
@@ -57,10 +57,10 @@ def encode_image_to_base64(image):
     return encoded_image
 
 def detect_objects(image, model):
-    results = model(image, conf=0.4, iou=0.5)
+    results = model(image, save=True, conf=0.7)
     detections = []
 
-    # results[0].save_crop(CROPPED_IMAGES_DIR)
+    results[0].save_crop(CROPPED_IMAGES_DIR)
 
     for i, result in enumerate(results[0].boxes.data):
         box, conf, cls = result[:4], result[4], int(result[5])
@@ -72,7 +72,7 @@ def detect_objects(image, model):
         cropped_image_base64 = encode_image_to_base64(cropped_image)
 
         detections.append({
-            'id': f'EdtrComp_{i+1}',
+            'id': f'{i+1}',
             'class': model.names[cls],
             'confidence': float(conf),
             'bbox': [float(x) for x in box],
